@@ -10,6 +10,8 @@ headers = {
     "Notion-Version": "2026-03-11" # 최신 버전 확인 권장
 }
 
+print(NDB.TOKEN)
+
 def create_page(description, date, n1, n2): # status 기본값 설정
     create_url = "https://api.notion.com/v1/pages"
     
