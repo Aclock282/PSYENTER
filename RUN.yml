@@ -1,0 +1,26 @@
+name: Notion Auto Calculation
+
+on:
+  schedule:
+    # 매 시간 0분에 실행 (UTC 기준이므로 한국 시간 -9시간)
+    - cron: '0 * * * *'
+  workflow_dispatch: # 수동으로도 실행 가능하게 설정
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 체크아웃 코드
+        uses: actions/checkout@v3
+
+      - name: 파이썬 설정
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 패키지 설치
+        run: |
+          pip install requests
+
+      - name: 코드 실행
+        run: python MAIN.py
